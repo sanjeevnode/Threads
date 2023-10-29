@@ -3,9 +3,10 @@ import { sidebarLinks } from "@/constants";
 import { SignOutButton, SignedIn, useAuth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const LeftSideBar = () => {
+  const router = useRouter();
   const pathname = usePathname();
   const { userId } = useAuth();
   return (
@@ -20,7 +21,7 @@ const LeftSideBar = () => {
             <Link
               key={index}
               href={link.route}
-              className={`leftsidebar_link ${isActive && "bg-primary-500 "}`}
+              className={`leftsidebar_link ${isActive && "bg-primary-500"}`}
             >
               <Image
                 src={link.imgURL}
@@ -37,7 +38,7 @@ const LeftSideBar = () => {
       <div className="mt-10 px-6">
         <SignedIn>
           <SignOutButton>
-            <Link href="/sign-in" className="flex cursor-pointer gap-4 p-4">
+            <Link href="/" className="flex cursor-pointer gap-4 p-4">
               <Image
                 src="/assets/logout.svg"
                 alt="logout"

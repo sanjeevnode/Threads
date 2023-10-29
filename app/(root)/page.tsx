@@ -4,8 +4,8 @@ import { currentUser } from "@clerk/nextjs";
 
 export default async function Home() {
   const result = await fetchPosts(1, 30);
-  const user = await currentUser();
-  if (!user) return null;
+  // const user = await currentUser();
+  // if (!user) return null;
 
   return (
     <>
@@ -19,7 +19,6 @@ export default async function Home() {
               <ThreadCard
                 key={index}
                 id={post._id}
-                currentUserId={user?.id}
                 parentId={post.parentId}
                 content={post.text}
                 author={post.author}
